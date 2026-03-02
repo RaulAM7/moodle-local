@@ -25,7 +25,10 @@ services:
         condition: service_healthy
     volumes:
       - moodle_data:/var/www/html
+      - /home/reboot/Escritorio/edukamiUniverse-moodle/dist:/var/www/html/mod/edukami
       - moodledata_data:/var/www/moodledata
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
       - MOODLE_DBTYPE=mariadb
       - MOODLE_DBHOST=db

@@ -48,3 +48,13 @@ sudo docker compose logs -f --tail=200 moodle mariadb
 ## Nota sobre permisos Docker
 Si añades el usuario al grupo `docker`, el cambio aplica tras cerrar sesión y volver a entrar.
 Hasta entonces, usa `sudo docker ...`.
+
+## Actualizar mod_edukami
+1. `cd /home/reboot/Escritorio/edukamiUniverse-moodle`
+2. `git pull`
+3. `npm install`
+4. `npm run build`
+5. `cd /home/reboot/Escritorio/moodle-local`
+6. `sg docker -c "docker compose up -d"`
+7. `sg docker -c "docker compose exec -T moodle php /var/www/html/admin/cli/purge_caches.php"`
+8. `sg docker -c "docker compose exec -T moodle php /var/www/html/admin/cli/upgrade.php --non-interactive"`
