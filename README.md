@@ -13,6 +13,7 @@ Entorno local de Moodle con `Docker Compose`, MariaDB y credenciales preconfigur
 
 ## Configuración principal
 - URL local: `http://localhost:8080`
+- Política de reinicio de contenedores: `unless-stopped`
 - Base de datos:
   - Motor: `mariadb`
   - Host: `db`
@@ -36,11 +37,12 @@ sudo docker compose down -v
 ## Notas de uso
 - En el primer arranque, Moodle puede tardar un poco en quedar disponible.
 - Si añades tu usuario al grupo `docker`, necesitas cerrar y abrir sesión para aplicar permisos; hasta entonces usa `sudo`.
+- Si quieres mantener Moodle lanzado, **no ejecutes** `docker compose down` después de `up -d`.
 - Puedes revisar estado y logs con:
 ```bash
 cd /home/reboot/Escritorio/moodle-local
 sudo docker compose ps
-sudo docker compose logs -f --tail=200 moodle mariadb
+sudo docker compose logs -f --tail=200 moodle db
 ```
 
 ## Login
@@ -50,9 +52,16 @@ sudo docker compose logs -f --tail=200 moodle mariadb
 - Email: admin@example.com
 
 ## Comandos de uso
+Para mantener Moodle lanzado:
 ```bash
 cd /home/reboot/Escritorio/moodle-local
 sudo docker compose up -d
-sudo docker compose down
+sudo docker compose ps
 sudo docker compose logs -f --tail=200 moodle
+```
+
+Para apagar el entorno manualmente:
+```bash
+cd /home/reboot/Escritorio/moodle-local
+sudo docker compose down
 ```

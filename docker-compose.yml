@@ -14,7 +14,7 @@ services:
       timeout: 5s
       retries: 12
       start_period: 30s
-    restart: "no"
+    restart: unless-stopped
 
   moodle:
     image: moodlehq/moodle-php-apache:8.4
@@ -41,7 +41,7 @@ services:
       - MOODLE_EMAIL=admin@example.com
       - MOODLE_SITE_FULLNAME=Moodle Local
       - MOODLE_SITE_SHORTNAME=MoodleLocal
-    restart: "no"
+    restart: unless-stopped
 
 volumes:
   mariadb_data:

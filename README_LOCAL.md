@@ -21,6 +21,15 @@ cd /home/reboot/Escritorio/moodle-local
 sudo docker compose up -d
 ```
 
+## Mantener Moodle lanzado
+- No ejecutes `sudo docker compose down` justo después de `up -d`.
+- Usa estos comandos para validar estado y seguir logs sin apagar:
+```bash
+cd /home/reboot/Escritorio/moodle-local
+sudo docker compose ps
+sudo docker compose logs -f --tail=200 moodle
+```
+
 ## Parar
 ```bash
 cd /home/reboot/Escritorio/moodle-local
@@ -37,7 +46,7 @@ sudo docker compose down -v
 ```bash
 cd /home/reboot/Escritorio/moodle-local
 sudo docker compose ps
-sudo docker compose logs -f --tail=200 moodle mariadb
+sudo docker compose logs -f --tail=200 moodle db
 ```
 
 ## Volúmenes persistentes
