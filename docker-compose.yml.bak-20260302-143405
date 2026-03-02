@@ -17,7 +17,7 @@ services:
     restart: "no"
 
   moodle:
-    image: moodlehq/moodle-php-apache:8.4
+    image: moodlehq/moodle-php-apache:latest
     ports:
       - "8080:80"
     depends_on:
