@@ -5,14 +5,14 @@ Entorno local de Moodle con `Docker Compose`, MariaDB y credenciales preconfigur
 ## Requisitos
 - Docker instalado
 - Plugin de Docker Compose (`docker compose`)
-- Puerto `8080` libre en la máquina local
+- Puerto `8082` libre en la máquina local
 
 ## Servicios incluidos
 - `db`: MariaDB `10.11`
 - `moodle`: imagen `moodlehq/moodle-php-apache:8.4`
 
 ## Configuración principal
-- URL local: `http://localhost:8080`
+- URL local: `http://localhost:8082`
 - Política de reinicio de contenedores: `unless-stopped`
 - Base de datos:
   - Motor: `mariadb`
@@ -46,7 +46,7 @@ sudo docker compose logs -f --tail=200 moodle db
 ```
 
 ## Login
-- URL: http://localhost:8080
+- URL: http://localhost:8082
 - Usuario: admin
 - Password: Admin1234!Admin1234!
 - Email: admin@example.com

@@ -19,7 +19,7 @@ services:
   moodle:
     image: moodlehq/moodle-php-apache:8.4
     ports:
-      - "8080:80"
+      - "8082:80"
     depends_on:
       db:
         condition: service_healthy
@@ -35,7 +35,7 @@ services:
       - MOODLE_DBNAME=moodle
       - MOODLE_DBUSER=moodle
       - MOODLE_DBPASS=moodle
-      - MOODLE_URL=http://localhost:8080
+      - MOODLE_URL=http://localhost:8082
       - MOODLE_USERNAME=admin
       - MOODLE_PASSWORD=Admin1234!Admin1234!
       - MOODLE_EMAIL=admin@example.com
